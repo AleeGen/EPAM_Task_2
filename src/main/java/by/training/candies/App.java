@@ -2,7 +2,17 @@ package by.training.candies;
 
 import by.training.candies.entity.*;
 import by.training.candies.parameters.*;
+import by.training.candies.validator.Validation;
+import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
+import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,10 +20,43 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class App {
-    public static void main(String[] args) {
 
-        String name1 = "candiGlazed_1";
+public class App {
+    public static final String pathXml = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\candies.xml";
+    public static final String pathXsd = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\schema.xsd";
+    public static void main(String[] args) {
+//// TODO: 14.03.2022 если xsd:ID начинается с буквы, какой тогда тип id делать в java классе
+        new Validation().valid(pathXsd, pathXml);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*String name1 = "candiGlazed_1";
         Production production1 = Production.getTypeProduction("Kommunarka");
         Set<Ingredients> ingredients1 = new HashSet<>();
         ingredients1.add(Ingredients.SUGAR);
@@ -41,8 +84,7 @@ public class App {
         Form form = Form.getForm("Free");
 
         ChocolateCandy candyChocolate = new ChocolateCandy(1, name2, production2, ingredients2, value2, dateStart2, dateFinish2, typeChocolate, form);
-        System.out.println(candyChocolate);
-
+        System.out.println(candyChocolate);*/
 
 
     }

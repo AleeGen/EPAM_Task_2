@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
 
-<candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="schema.xsd">anyType
+    <chocolate_candy type_chocolate="White" form="Oval">
+        <id>a1</id>
+        <name>as</name>
+        <date_manufacture>2022-09-24</date_manufacture>
+        <date_expiration>2022-05-24</date_expiration>
+        <production>Vesta</production>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Sugar</ingredient>
+        <value>
+            <proteins>123</proteins>
+            <fats>567</fats>
+            <carbohydrates>345</carbohydrates>
+            <energy>50</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="Bitter" form="Oval">
+        <id>a2</id>
+        <name>as</name>
+        <date_manufacture>2002-09-24</date_manufacture>
+        <date_expiration>2022-05-24</date_expiration>
+        <production>Spartak</production>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Sugar</ingredient>
+        <value>
+            <proteins>123</proteins>
+            <fats>567</fats>
+            <carbohydrates>345</carbohydrates>
+            <energy>50</energy>
+        </value>
+    </chocolate_candy>
+
 </candies>
