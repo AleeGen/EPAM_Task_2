@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
+    <xsd:element name="candies">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="candy" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 
-    <xsd:complexType name="abstract_candies_type">
+    <xsd:complexType name="candy_type">
         <xsd:sequence>
             <xsd:element name="id" type="xsd:ID"/>
             <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="30"/>
@@ -12,12 +19,11 @@
             <xsd:element name="ingredient" type="ingredients_type" maxOccurs="unbounded"/>
             <xsd:element name="value" type="value_type"/>
         </xsd:sequence>
-
     </xsd:complexType>
 
     <xsd:complexType name="chocolate_candy_type">
         <xsd:complexContent>
-            <xsd:extension base="abstract_candies_type">
+            <xsd:extension base="candy_type">
                 <xsd:attribute name="type_chocolate" type="type_chocolate_type" use="required"/>
                 <xsd:attribute name="form" type="form_type" use="optional" default="Free"/>
             </xsd:extension>
@@ -26,7 +32,7 @@
 
     <xsd:complexType name="glazed_candy_type">
         <xsd:complexContent>
-            <xsd:extension base="abstract_candies_type">
+            <xsd:extension base="candy_type">
                 <xsd:attribute name="type_glazed" type="type_glazed_type" use="optional" default="Sugar"/>
                 <xsd:attribute name="filling" type="filling_type" use="required"/>
             </xsd:extension>
@@ -34,19 +40,11 @@
     </xsd:complexType>
 
 
-    <xsd:element name="abstract_candies" type="abstract_candies_type" abstract="true"/>
+    <xsd:element name="candy" type="candy_type" abstract="true"/>
 
-    <xsd:element name="candies">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element ref="abstract_candies" maxOccurs="unbounded"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:element name="chocolate_candy" type="chocolate_candy_type" substitutionGroup="candy"/>
 
-    <xsd:element name="chocolate_candy" type="chocolate_candy_type" substitutionGroup="abstract_candies"/>
-
-    <xsd:element name="glazed_candy" type="glazed_candy_type" substitutionGroup="abstract_candies"/>
+    <xsd:element name="glazed_candy" type="glazed_candy_type" substitutionGroup="candy"/>
 
 
     <xsd:simpleType name="custom_date_type">
@@ -136,6 +134,5 @@
             <xsd:element name="energy" type="xsd:positiveInteger"/>
         </xsd:sequence>
     </xsd:complexType>
-
 
 </xsd:schema>

@@ -2,35 +2,289 @@
 <candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
 
     <chocolate_candy type_chocolate="White" form="Oval">
-        <id>a1</id>
-        <name>as</name>
-        <date_manufacture>2022-09-24</date_manufacture>
-        <date_expiration>2022-05-24</date_expiration>
+        <id>c1</id>
+        <name>candy_1</name>
+        <date_manufacture>2022-01-01</date_manufacture>
+        <date_expiration>2022-06-11</date_expiration>
         <production>Vesta</production>
         <ingredient>Fructose</ingredient>
-        <ingredient>Sugar</ingredient>
         <value>
-            <proteins>123</proteins>
-            <fats>567</fats>
-            <carbohydrates>345</carbohydrates>
-            <energy>50</energy>
+            <proteins>1</proteins>
+            <fats>2</fats>
+            <carbohydrates>3</carbohydrates>
+            <energy>10</energy>
         </value>
     </chocolate_candy>
 
-    <chocolate_candy type_chocolate="Bitter" form="Oval">
-        <id>a2</id>
-        <name>as</name>
-        <date_manufacture>2002-09-24</date_manufacture>
-        <date_expiration>2022-05-24</date_expiration>
-        <production>Spartak</production>
+    <chocolate_candy type_chocolate="Bitter" form="Round">
+        <id>c2</id>
+        <name>candy_2</name>
+        <date_manufacture>2022-01-01</date_manufacture>
+        <date_expiration>2022-06-11</date_expiration>
+        <production>Kommunarka</production>
         <ingredient>Fructose</ingredient>
-        <ingredient>Sugar</ingredient>
+        <ingredient>Salt</ingredient>
         <value>
-            <proteins>123</proteins>
-            <fats>567</fats>
-            <carbohydrates>345</carbohydrates>
-            <energy>50</energy>
+            <proteins>2</proteins>
+            <fats>4</fats>
+            <carbohydrates>2</carbohydrates>
+            <energy>11</energy>
         </value>
     </chocolate_candy>
+
+    <chocolate_candy type_chocolate="Lactic" form="Square">
+        <id>c3</id>
+        <name>candy_2</name>
+        <date_manufacture>2022-02-02</date_manufacture>
+        <date_expiration>2022-07-12</date_expiration>
+        <production>Ideal</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Salt</ingredient>
+        <value>
+            <proteins>5</proteins>
+            <fats>6</fats>
+            <carbohydrates>8</carbohydrates>
+            <energy>17</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="Bitter" form="Square">
+        <id>c4</id>
+        <name>candy_1</name>
+        <date_manufacture>2022-12-02</date_manufacture>
+        <date_expiration>2023-04-21</date_expiration>
+        <production>Ideal</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Salt</ingredient>
+        <value>
+            <proteins>2</proteins>
+            <fats>3</fats>
+            <carbohydrates>6</carbohydrates>
+            <energy>6</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="Bitter">
+        <id>c5</id>
+        <name>candy_3</name>
+        <date_manufacture>2019-11-07</date_manufacture>
+        <date_expiration>2020-03-30</date_expiration>
+        <production>Ideal</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Salt</ingredient>
+        <value>
+            <proteins>1</proteins>
+            <fats>6</fats>
+            <carbohydrates>9</carbohydrates>
+            <energy>13</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="White">
+        <id>c6</id>
+        <name>candy_4</name>
+        <date_manufacture>2019-11-07</date_manufacture>
+        <date_expiration>2020-03-30</date_expiration>
+        <production>Vitroom</production>
+        <ingredient>Flour</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Salt</ingredient>
+        <value>
+            <proteins>2</proteins>
+            <fats>6</fats>
+            <carbohydrates>9</carbohydrates>
+            <energy>12</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="White" form="Relief">
+        <id>c7</id>
+        <name>candy_5</name>
+        <date_manufacture>2022-03-17</date_manufacture>
+        <date_expiration>2022-04-25</date_expiration>
+        <production>Good new</production>
+        <ingredient>Flour</ingredient>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Salt</ingredient>
+        <value>
+            <proteins>8</proteins>
+            <fats>1</fats>
+            <carbohydrates>6</carbohydrates>
+            <energy>4</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="Lactic" form="Rectangular">
+        <id>c8</id>
+        <name>candy_5</name>
+        <date_manufacture>2022-03-17</date_manufacture>
+        <date_expiration>2023-04-25</date_expiration>
+        <production>Good new</production>
+        <ingredient>Flour</ingredient>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Starch</ingredient>
+        <value>
+            <proteins>2</proteins>
+            <fats>1</fats>
+            <carbohydrates>5</carbohydrates>
+            <energy>14</energy>
+        </value>
+    </chocolate_candy>
+
+    <glazed_candy filling="Jelly" type_glazed="Caramel">
+        <id>g1</id>
+        <name>candy_6</name>
+        <date_manufacture>2022-12-17</date_manufacture>
+        <date_expiration>2023-04-25</date_expiration>
+        <production>Smak</production>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Starch</ingredient>
+        <value>
+            <proteins>8</proteins>
+            <fats>2</fats>
+            <carbohydrates>3</carbohydrates>
+            <energy>13</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="Grillage">
+        <id>g2</id>
+        <name>candy_6</name>
+        <date_manufacture>2021-11-17</date_manufacture>
+        <date_expiration>2023-11-25</date_expiration>
+        <production>Smak</production>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Flour</ingredient>
+        <value>
+            <proteins>9</proteins>
+            <fats>4</fats>
+            <carbohydrates>13</carbohydrates>
+            <energy>24</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="Souffle" type_glazed="Chololate">
+        <id>g3</id>
+        <name>candy_7</name>
+        <date_manufacture>2021-02-17</date_manufacture>
+        <date_expiration>2021-06-15</date_expiration>
+        <production>Ideal</production>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Butter</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Flour</ingredient>
+        <value>
+            <proteins>9</proteins>
+            <fats>4</fats>
+            <carbohydrates>13</carbohydrates>
+            <energy>24</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="Truffles" type_glazed="White">
+        <id>g4</id>
+        <name>candy_8</name>
+        <date_manufacture>2021-11-17</date_manufacture>
+        <date_expiration>2023-11-25</date_expiration>
+        <production>Raipo</production>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Wafer</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Flour</ingredient>
+        <value>
+            <proteins>1</proteins>
+            <fats>10</fats>
+            <carbohydrates>16</carbohydrates>
+            <energy>28</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="With liquor" type_glazed="Dairy">
+        <id>g5</id>
+        <name>candy_8</name>
+        <date_manufacture>2021-12-29</date_manufacture>
+        <date_expiration>2022-11-26</date_expiration>
+        <production>Vesta</production>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Fructose</ingredient>
+        <value>
+            <proteins>4</proteins>
+            <fats>11</fats>
+            <carbohydrates>12</carbohydrates>
+            <energy>20</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="With praline" type_glazed="Sugar">
+        <id>g6</id>
+        <name>candy_9</name>
+        <date_manufacture>2022-02-20</date_manufacture>
+        <date_expiration>2022-03-21</date_expiration>
+        <production>Vitroom</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Vegetable fat</ingredient>
+        <ingredient>Fructose</ingredient>
+        <value>
+            <proteins>7</proteins>
+            <fats>5</fats>
+            <carbohydrates>3</carbohydrates>
+            <energy>12</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="With puffed rice" type_glazed="Fat">
+        <id>g7</id>
+        <name>candy_10</name>
+        <date_manufacture>2022-11-11</date_manufacture>
+        <date_expiration>2022-12-04</date_expiration>
+        <production>Spartak</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Fructose</ingredient>
+        <value>
+            <proteins>17</proteins>
+            <fats>1</fats>
+            <carbohydrates>2</carbohydrates>
+            <energy>5</energy>
+        </value>
+    </glazed_candy>
+
+    <glazed_candy filling="Fondant">
+        <id>g8</id>
+        <name>candy_11</name>
+        <date_manufacture>2022-11-11</date_manufacture>
+        <date_expiration>2022-12-04</date_expiration>
+        <production>Good new</production>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Butter</ingredient>
+        <ingredient>Vanillin</ingredient>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Starch</ingredient>
+        <ingredient>Fructose</ingredient>
+        <value>
+            <proteins>5</proteins>
+            <fats>9</fats>
+            <carbohydrates>12</carbohydrates>
+            <energy>22</energy>
+        </value>
+    </glazed_candy>
 
 </candies>

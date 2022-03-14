@@ -8,18 +8,21 @@ import by.training.candies.parameters.Value;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class AbstractCandies {  //// TODO: 12.03.2022 использовать Builder
-    private long id;
+public abstract class AbstractCandy {  //// TODO: 12.03.2022 использовать Builder
+    private String id;   //// TODO: 14.03.2022 должен быть long, но в xml ID строковый
     private String name;
+    private Production production;
     private LocalDate dateManufacture;
     private LocalDate dateExpiration;
-
-    private Production production;
     private Set<Ingredients> ingredients;  //// TODO: 12.03.2022 как отобразить множество в xsd?
     private Value value;
 
+    AbstractCandy() {
+    ingredients=new HashSet<>();
+    value = new Value();
+    }
 
-    AbstractCandies(long id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate) {
+    AbstractCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate) {
         this.id = id;
         this.name = name;
         this.production = production;
@@ -29,8 +32,8 @@ public abstract class AbstractCandies {  //// TODO: 12.03.2022 использо�
         this.dateExpiration = bestBeforeDate;
     }
 
-    public long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public String getName() {
@@ -57,7 +60,7 @@ public abstract class AbstractCandies {  //// TODO: 12.03.2022 использо�
         return dateExpiration;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -89,14 +92,15 @@ public abstract class AbstractCandies {  //// TODO: 12.03.2022 использо�
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractCandies that = (AbstractCandies) o;
-        return id == that.id && Objects.equals(name, that.name) && production == that.production && Objects.equals(ingredients, that.ingredients) && Objects.equals(value, that.value) && Objects.equals(dateManufacture, that.dateManufacture) && Objects.equals(dateExpiration, that.dateExpiration);
+        AbstractCandy that = (AbstractCandy) o;
+        return id.equals(that.id) && Objects.equals(name, that.name) && production == that.production && Objects.equals(ingredients, that.ingredients) && Objects.equals(value, that.value) && Objects.equals(dateManufacture, that.dateManufacture) && Objects.equals(dateExpiration, that.dateExpiration);
     }
 
-    @Override
+   /* @Override
     public int hashCode() {
-        return Arrays.hashCode(new Object[]{this});
-    }
+        return Objects.hashCode(this);
+        //return id.hashCode()+name.hashCode()+production.hashCode()+dateManufacture.hashCode()+dateExpiration.hashCode()+ingredients.hashCode()+ value.hashCode();
+    }*/
 
     @Override
     public String toString() {

@@ -1,6 +1,10 @@
-package by.training.candies.validator;
+package by.training.candies.validator.impl;
 
-import by.training.candies.exception.CustomExceptionHandler;
+import by.training.candies.exception.CustomErrorHandler;
+import by.training.candies.validator.ChecksValidity;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -12,8 +16,8 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
-public class Validation {
-
+public class Validation implements ChecksValidity {
+    private static Logger logger = LogManager.getLogger();
 
     public boolean valid(String pathXsd, String pathXml) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
@@ -23,12 +27,26 @@ public class Validation {
             Schema schema = factory.newSchema(schemaLocation);
             Validator validator = schema.newValidator();
             Source source = new StreamSource(pathXml);
-            validator.setErrorHandler(new CustomExceptionHandler());
+            validator.setErrorHandler(new CustomErrorHandler());
             validator.validate(source);
+            return true;
         } catch (SAXException | IOException e) {
-            System.err.println(pathXml + " is not correct or valid");
+            logger.log(Level.ERROR, pathXml + " is not correct or valid");
         }
         return false;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

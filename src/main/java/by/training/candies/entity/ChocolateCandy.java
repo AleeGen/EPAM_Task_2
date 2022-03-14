@@ -3,15 +3,18 @@ package by.training.candies.entity;
 import by.training.candies.parameters.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
-public class ChocolateCandy extends AbstractCandies {
+public class ChocolateCandy extends AbstractCandy {
 
     private Form form;
     private TypeChocolate typeChocolate;
 
-    public ChocolateCandy(long id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeChocolate typeChocolate, Form form) {
+    public ChocolateCandy(){
+        super();
+    }
+    public ChocolateCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeChocolate typeChocolate, Form form) {
         super(id, name, production, ingredients, value, dateManufacture, bestBeforeDate);
         this.typeChocolate = typeChocolate;
         this.form = form;
@@ -43,10 +46,11 @@ public class ChocolateCandy extends AbstractCandies {
         return typeChocolate == that.typeChocolate && form == that.form;
     }
 
-    @Override
+   /* @Override
     public int hashCode() {
-        return super.hashCode() + form.hashCode() + typeChocolate.hashCode();
-    }
+       return Objects.hashCode(this);
+        //return super.hashCode() + form.hashCode() + typeChocolate.hashCode();
+    }*/
 
     @Override
     public String toString() {

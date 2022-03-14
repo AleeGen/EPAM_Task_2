@@ -1,51 +1,40 @@
 package by.training.candies;
 
-import by.training.candies.entity.*;
-import by.training.candies.parameters.*;
-import by.training.candies.validator.Validation;
+import by.training.candies.builder.CandiesSaxBuilder;
+import by.training.candies.entity.AbstractCandy;
+import by.training.candies.entity.ChocolateCandy;
+import by.training.candies.exception.CustomErrorHandler;
+import by.training.candies.parameters.Form;
+import by.training.candies.parameters.TypeChocolate;
+import by.training.candies.util.CandiesHandler;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
-import javax.xml.XMLConstants;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-import java.io.File;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class App {
     public static final String pathXml = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\candies.xml";
     public static final String pathXsd = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\schema.xsd";
+
     public static void main(String[] args) {
-//// TODO: 14.03.2022 если xsd:ID начинается с буквы, какой тогда тип id делать в java классе
-        new Validation().valid(pathXsd, pathXml);
+
+
+        CandiesSaxBuilder saxBuilder = new CandiesSaxBuilder();
+        saxBuilder.buildSetCandies(pathXml);
+        for (var i:saxBuilder.getCandies()){
+            System.out.println(i);
+        }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       /*boolean result = new Validation().valid(pathXsd, pathXml);
+        System.out.println(result);*/
 
 
 

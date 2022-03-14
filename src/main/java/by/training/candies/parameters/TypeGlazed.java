@@ -11,13 +11,14 @@ public enum TypeGlazed {
     private String type;
 
     TypeGlazed() {
+        type = "";
     }
 
     TypeGlazed(String type) {
         this.type = type;
     }
 
-    public static TypeGlazed getTypeGlazed(String typeGlazed) {
+    public static TypeGlazed getType(String typeGlazed) {
         for (TypeGlazed glazed : TypeGlazed.values()) {
             if (glazed.type.equals(typeGlazed)) {
                 return glazed;

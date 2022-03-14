@@ -8,6 +8,13 @@ public class Value {
     private int carbohydrates;
     private int energy;
 
+    public Value() {
+        proteins = 0;
+        fats = 0;
+        carbohydrates = 0;
+        energy = 0;
+    }
+
     public Value(int proteins, int fats, int carbohydrates, int energy) {
         this.proteins = proteins;
         this.fats = fats;

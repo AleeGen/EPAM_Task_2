@@ -15,7 +15,7 @@ public enum Filling {
         this.filling = filling;
     }
 
-    public static Filling getFilling(String filling) {
+    public static Filling getType(String filling) {
         for (Filling fil : Filling.values()) {
             if (fil.filling.equals(filling)) {
                 return fil;
