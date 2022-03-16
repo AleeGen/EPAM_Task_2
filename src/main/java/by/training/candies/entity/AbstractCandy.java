@@ -14,7 +14,7 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
     private Production production;
     private LocalDate dateManufacture;
     private LocalDate dateExpiration;
-    private Set<Ingredients> ingredients;  //// TODO: 12.03.2022 как отобразить множество в xsd?
+    private Set<Ingredients> ingredients;
     private Value value;
 
     AbstractCandy() {

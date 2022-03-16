@@ -21,7 +21,7 @@
     </Appenders>
     <Loggers>
         <Logger name="Log_File" level="trace" additivity="false">
-            <AppenderRef refs="FileRolling"/>
+            <AppenderRef ref="FileRolling"/>
         </Logger>
         <Root level="trace">
             <AppenderRef ref="FileRolling"/>

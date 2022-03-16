@@ -6,7 +6,7 @@ public enum Form {
     SQUARE("Square"),
     OVAL("Oval"),
     RELIEF("Relief"),
-    FREE("Free");
+    FREE("");
     String form;
 
     Form(String form) {

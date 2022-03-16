@@ -14,16 +14,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CandiesHandler extends DefaultHandler {
+    private static final String ELEMENT_CHOCOLATE_CANDIES = "chocolate_candy";
+    private static final String ELEMENT_GLAZED_CANDIES = "glazed_candy";
 
     private Set<AbstractCandy> candies;
     private AbstractCandy current;
     private CandiesXmlTag currentXmlTag;
     private EnumSet<CandiesXmlTag> withText;
-    private static final String ELEMENT_CHOCOLATE_CANDIES = "chocolate_candy";
-    private static final String ELEMENT_GLAZED_CANDIES = "glazed_candy";
 
     public CandiesHandler() {
-        candies = new HashSet<AbstractCandy>();
+        candies = new HashSet<>();
         withText = EnumSet.range(CandiesXmlTag.ID, CandiesXmlTag.ENERGY);
     }
 
@@ -31,20 +31,25 @@ public class CandiesHandler extends DefaultHandler {
         return candies;
     }
 
+    @Override
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
         switch (qName) {
             case ELEMENT_CHOCOLATE_CANDIES:
                 current = new ChocolateCandy();
-                ((ChocolateCandy) current).setTypeChocolate(TypeChocolate.getType(attrs.getValue(0)));
+                ((ChocolateCandy) current).setTypeChocolate(TypeChocolate.getType(attrs.getValue(attrs.getIndex("type_chocolate"))));
                 if (attrs.getLength() == 2) {
-                    ((ChocolateCandy) current).setForm(Form.getForm(attrs.getValue(1)));
+                    ((ChocolateCandy) current).setForm(Form.getForm(attrs.getValue(attrs.getIndex("form"))));
+                } else {
+                    ((ChocolateCandy) current).setForm(Form.getForm(""));
                 }
                 break;
             case ELEMENT_GLAZED_CANDIES:
                 current = new GlazedCandy();
-                ((GlazedCandy) current).setTypeGlazed(TypeGlazed.getType(attrs.getValue(0)));
+                ((GlazedCandy) current).setFilling(Filling.getType(attrs.getValue(attrs.getIndex("filling"))));
                 if (attrs.getLength() == 2) {
-                    ((GlazedCandy) current).setFilling(Filling.getType(attrs.getValue(1)));
+                    ((GlazedCandy) current).setTypeGlazed(TypeGlazed.getType(attrs.getValue(attrs.getIndex("type_glazed"))));
+                } else {
+                    ((GlazedCandy) current).setTypeGlazed(TypeGlazed.getType(""));
                 }
                 break;
             default:
@@ -55,12 +60,14 @@ public class CandiesHandler extends DefaultHandler {
         }
     }
 
+    @Override
     public void endElement(String uri, String localName, String qName) {
-        if (ELEMENT_CHOCOLATE_CANDIES.equals(qName) || ELEMENT_CHOCOLATE_CANDIES.equals(qName)) {
+        if (ELEMENT_CHOCOLATE_CANDIES.equals(qName) || ELEMENT_GLAZED_CANDIES.equals(qName)) {
             candies.add(current);
         }
     }
 
+    @Override
     public void characters(char[] ch, int start, int length) {
         String data = new String(ch, start, length).strip();
         if (currentXmlTag != null) {

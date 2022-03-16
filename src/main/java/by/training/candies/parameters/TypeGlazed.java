@@ -7,7 +7,7 @@ public enum TypeGlazed {
     DAIRY("Dairy"),
     WHITE("White"),
     SUGAR("Sugar"),
-    MISSING;   //// TODO: 12.03.2022 как указать в xsd пустое значение?
+    MISSING("");
     private String type;
 
     TypeGlazed() {

@@ -29,11 +29,11 @@ public class Validation implements ChecksValidity {
             Source source = new StreamSource(pathXml);
             validator.setErrorHandler(new CustomErrorHandler());
             validator.validate(source);
-            return true;
         } catch (SAXException | IOException e) {
-            logger.log(Level.ERROR, pathXml + " is not correct or valid");
+            logger.log(Level.ERROR, pathXml + " is not correct");
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

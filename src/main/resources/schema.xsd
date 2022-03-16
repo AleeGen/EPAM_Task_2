@@ -33,7 +33,7 @@
     <xsd:complexType name="glazed_candy_type">
         <xsd:complexContent>
             <xsd:extension base="candy_type">
-                <xsd:attribute name="type_glazed" type="type_glazed_type" use="optional" default="Sugar"/>
+                <xsd:attribute name="type_glazed" type="type_glazed_type" use="optional" default="Missing"/>
                 <xsd:attribute name="filling" type="filling_type" use="required"/>
             </xsd:extension>
         </xsd:complexContent>
@@ -122,7 +122,7 @@
             <xsd:enumeration value="Dairy"/>
             <xsd:enumeration value="White"/>
             <xsd:enumeration value="Sugar"/>
-            <xsd:enumeration value=""/>
+            <xsd:enumeration value="Missing"/>
         </xsd:restriction>
     </xsd:simpleType>
 
