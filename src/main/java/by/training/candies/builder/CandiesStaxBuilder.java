@@ -5,12 +5,12 @@ import by.training.candies.entity.AbstractCandy;
 import by.training.candies.entity.CandiesXmlTag;
 import by.training.candies.entity.ChocolateCandy;
 import by.training.candies.entity.GlazedCandy;
+import by.training.candies.exception.CustomException;
 import by.training.candies.parameters.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,8 +31,8 @@ public class CandiesStaxBuilder extends AbstractBuilderCandies {
         candies = new HashSet<AbstractCandy>();
     }
 
-    public Set<AbstractCandy> getCandies() {
-        return candies;
+    public CandiesStaxBuilder(Set<AbstractCandy> candies) {
+        super(candies);
     }
 
     @Override
@@ -45,10 +45,7 @@ public class CandiesStaxBuilder extends AbstractBuilderCandies {
                 int type = reader.next();
                 if (type == XMLStreamConstants.START_ELEMENT) {
                     name = reader.getLocalName();
-                    if (name.equals(CandiesXmlTag.CHOCOLATE_CANDY.getValue())) {
-                        AbstractCandy candy = buildCandies(reader);
-                        candies.add(candy);
-                    } else if (name.equals(CandiesXmlTag.GLAZED_CANDY.getValue())) {
+                    if (name.equals(CandiesXmlTag.CHOCOLATE_CANDY.getValue()) || name.equals(CandiesXmlTag.GLAZED_CANDY.getValue())) {
                         AbstractCandy candy = buildCandies(reader);
                         candies.add(candy);
                     }
@@ -70,19 +67,20 @@ public class CandiesStaxBuilder extends AbstractBuilderCandies {
             String filling = reader.getAttributeValue(null, CandiesXmlTag.FILLING.getValue());
             ((GlazedCandy) candy).setFilling(Filling.getType(filling));
             String type_glazed = reader.getAttributeValue(null, CandiesXmlTag.TYPE_GLAZED.getValue());
+            if (type_glazed == null) {
+                type_glazed = "";
+            }
             ((GlazedCandy) candy).setTypeGlazed(TypeGlazed.getType(type_glazed));
         } else if (reader.getLocalName().equals(CandiesXmlTag.CHOCOLATE_CANDY.getValue())) {
             candy = new ChocolateCandy();
             String type_chocolate = reader.getAttributeValue(null, CandiesXmlTag.TYPE_CHOCOLATE.getValue());
             ((ChocolateCandy) candy).setTypeChocolate(TypeChocolate.getType(type_chocolate));
             String form = reader.getAttributeValue(null, CandiesXmlTag.FORM.getValue());
+            if (form == null) {
+                form = "";
+            }
             ((ChocolateCandy) candy).setForm(Form.getForm(form));
         }
-
-        if(candy==null){
-            // null check //// TODO: 16.03.2022
-        }
-
         String name;
         while (reader.hasNext()) {
             int type = reader.next();

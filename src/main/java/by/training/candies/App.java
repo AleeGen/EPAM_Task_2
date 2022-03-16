@@ -1,9 +1,6 @@
 package by.training.candies;
 
-import by.training.candies.builder.AbstractBuilderCandies;
-import by.training.candies.builder.CandiesDomBuilder;
-import by.training.candies.builder.CandiesSaxBuilder;
-import by.training.candies.builder.CandiesStaxBuilder;
+import by.training.candies.builder.*;
 import by.training.candies.entity.AbstractCandy;
 import by.training.candies.entity.ChocolateCandy;
 import by.training.candies.exception.CustomErrorHandler;
@@ -27,18 +24,23 @@ public class App {
     public static final String pathXml = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\candies.xml";
     public static final String pathXsd = "C:\\Users\\user\\IdeaProjects\\SecondTaskEPAM\\src\\main\\resources\\schema.xsd";
 
-    public static void main(String[] args) { //// FIXME: 16.03.2022 выскакиевает два раза chocolate_type
-        //// FIXME: 16.03.2022 нулевые значения формы и типа глазури (дефолтные)
+    public static void main(String[] args) { //// TODO: 16.03.2022 абсолютные ссылки исправить 
 
 
-        CandiesStaxBuilder staxBuilder = new CandiesStaxBuilder();
+        String type = "stax";
+        AbstractBuilderCandies builder = CandiesBuilderFactory.createCandiesBuilder(type);
+        builder.buildSetCandies(pathXml);
+        for (var i : builder.getCandies()) {
+            System.out.println(i);
+        }
+
+        /*CandiesStaxBuilder staxBuilder = new CandiesStaxBuilder();
         staxBuilder.buildSetCandies(pathXml);
         for (var i:staxBuilder.getCandies()) {
             System.out.println(i);
         }
 
-
-        /*System.out.println("-------------");
+        System.out.println("-------------");
         CandiesDomBuilder domBuilder = new CandiesDomBuilder();
         domBuilder.buildSetCandies(pathXml);
         for (var i:domBuilder.getCandies()) {
@@ -51,7 +53,7 @@ public class App {
             System.out.println(i);
         }
 
-       /*boolean result = new Validation().valid(pathXsd, pathXml);
+       boolean result = new Validation().valid(pathXsd, pathXml);
         System.out.println(result);*/
+        }
     }
-}

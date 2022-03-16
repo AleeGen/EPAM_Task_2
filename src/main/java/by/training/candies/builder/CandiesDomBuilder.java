@@ -38,6 +38,10 @@ public class CandiesDomBuilder extends AbstractBuilderCandies {
         }
     }
 
+    public CandiesDomBuilder(Set<AbstractCandy> candies) {
+        super(candies);
+    }
+
     @Override
     public void buildSetCandies(String filename) {
         Document doc;

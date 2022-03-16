@@ -18,8 +18,8 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
     private Value value;
 
     AbstractCandy() {
-    ingredients=new HashSet<>();
-    value = new Value();
+        ingredients = new HashSet<>();
+        value = new Value();
     }
 
     AbstractCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate) {
@@ -96,11 +96,12 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
         return id.equals(that.id) && Objects.equals(name, that.name) && production == that.production && Objects.equals(ingredients, that.ingredients) && Objects.equals(value, that.value) && Objects.equals(dateManufacture, that.dateManufacture) && Objects.equals(dateExpiration, that.dateExpiration);
     }
 
-   /* @Override
+    @Override
     public int hashCode() {
-        return Objects.hashCode(this);
-        //return id.hashCode()+name.hashCode()+production.hashCode()+dateManufacture.hashCode()+dateExpiration.hashCode()+ingredients.hashCode()+ value.hashCode();
-    }*/
+        return id.hashCode() + name.hashCode() + production.hashCode()
+                + dateManufacture.hashCode() + dateExpiration.hashCode()
+                + ingredients.hashCode() + value.hashCode();
+    }
 
     @Override
     public String toString() {

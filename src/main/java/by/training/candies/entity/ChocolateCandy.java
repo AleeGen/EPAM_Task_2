@@ -12,9 +12,10 @@ public class ChocolateCandy extends AbstractCandy {
     private Form form;
     private TypeChocolate typeChocolate;
 
-    public ChocolateCandy(){
+    public ChocolateCandy() {
         super();
     }
+
     public ChocolateCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeChocolate typeChocolate, Form form) {
         super(id, name, production, ingredients, value, dateManufacture, bestBeforeDate);
         this.typeChocolate = typeChocolate;
@@ -47,18 +48,16 @@ public class ChocolateCandy extends AbstractCandy {
         return typeChocolate == that.typeChocolate && form == that.form;
     }
 
-   /* @Override
+    @Override
     public int hashCode() {
-       return Objects.hashCode(this);
-        //return super.hashCode() + form.hashCode() + typeChocolate.hashCode();
-    }*/
+        return super.hashCode() + form.hashCode() + typeChocolate.hashCode();
+    }
 
     @Override
     public String toString() {
         return new StringBuilder().append("ChocolateCandy{")
                 .append(super.toString()).append(", typeChocolate=")
                 .append(typeChocolate).append(", form=").append(form)
-                .append(", typeChocolate=").append(typeChocolate)
                 .append('}').toString();
     }
 }

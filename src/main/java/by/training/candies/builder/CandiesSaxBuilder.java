@@ -13,6 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.util.Set;
 
 public class CandiesSaxBuilder extends AbstractBuilderCandies {
     private static Logger logger = LogManager.getLogger();
@@ -31,6 +32,10 @@ public class CandiesSaxBuilder extends AbstractBuilderCandies {
         }
         reader.setErrorHandler(new CustomErrorHandler());
         reader.setContentHandler(handler);
+    }
+
+    public CandiesSaxBuilder(Set<AbstractCandy> candies) {
+        super(candies);
     }
 
     @Override

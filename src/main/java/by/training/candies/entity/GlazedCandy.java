@@ -43,11 +43,10 @@ public class GlazedCandy extends AbstractCandy {
         return glazed == that.glazed && filling == that.filling;
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hashCode(this);
-       // return super.hashCode() + glazed.hashCode() + filling.hashCode();
-    }*/
+        return super.hashCode() + glazed.hashCode() + filling.hashCode();
+    }
 
     @Override
     public String toString() {
