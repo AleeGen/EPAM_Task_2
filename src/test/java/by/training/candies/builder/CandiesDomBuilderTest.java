@@ -1,8 +1,11 @@
 package by.training.candies.builder;
 
 import by.training.candies.entity.AbstractCandy;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.Set;
 
 import static org.testng.Assert.*;
 
@@ -16,11 +19,9 @@ public class CandiesDomBuilderTest {
     }
 
     @Test(dataProvider = "true_candy")
-    public void testBuildSetCandies(AbstractCandy candy) {
+    public void testBuildSetCandies(Set<AbstractCandy> expected) {
         AbstractBuilderCandies builder = CandiesBuilderFactory.createCandiesBuilder("dom");
         builder.buildSetCandies(pathXml);
-        for (var i : builder.getCandies()) {
-            System.out.println(i);
-        }
+        assertEquals(builder.getCandies(), expected,"not equals");
     }
 }

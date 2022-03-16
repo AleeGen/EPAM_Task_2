@@ -1,10 +1,8 @@
 package by.training.candies.entity;
 
-import by.training.candies.parameters.*;
-import org.apache.logging.log4j.core.util.JsonUtils;
+import by.training.candies.parameter.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Set;
 
 public class ChocolateCandy extends AbstractCandy {

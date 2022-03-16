@@ -1,7 +1,6 @@
 package by.training.candies.builder;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +12,7 @@ import by.training.candies.entity.AbstractCandy;
 import by.training.candies.entity.ChocolateCandy;
 import by.training.candies.entity.GlazedCandy;
 import by.training.candies.exception.CustomException;
-import by.training.candies.parameters.*;
+import by.training.candies.parameter.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

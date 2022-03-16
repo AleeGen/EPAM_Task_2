@@ -1,9 +1,9 @@
 package by.training.candies.entity;
 
 
-import by.training.candies.parameters.Ingredients;
-import by.training.candies.parameters.Production;
-import by.training.candies.parameters.Value;
+import by.training.candies.parameter.Ingredients;
+import by.training.candies.parameter.Production;
+import by.training.candies.parameter.Value;
 
 import java.time.LocalDate;
 import java.util.*;

@@ -1,23 +1,6 @@
 package by.training.candies;
 
 import by.training.candies.builder.*;
-import by.training.candies.entity.AbstractCandy;
-import by.training.candies.entity.ChocolateCandy;
-import by.training.candies.exception.CustomErrorHandler;
-import by.training.candies.exception.CustomException;
-import by.training.candies.parameters.Form;
-import by.training.candies.parameters.TypeChocolate;
-import by.training.candies.util.CandiesHandler;
-import by.training.candies.validator.impl.Validation;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class App {

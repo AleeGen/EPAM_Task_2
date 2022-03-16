@@ -1,9 +1,8 @@
 package by.training.candies.entity;
 
-import by.training.candies.parameters.*;
+import by.training.candies.parameter.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Set;
 
 public class GlazedCandy extends AbstractCandy {

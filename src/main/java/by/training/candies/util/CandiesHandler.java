@@ -4,7 +4,7 @@ import by.training.candies.entity.AbstractCandy;
 import by.training.candies.entity.CandiesXmlTag;
 import by.training.candies.entity.ChocolateCandy;
 import by.training.candies.entity.GlazedCandy;
-import by.training.candies.parameters.*;
+import by.training.candies.parameter.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 

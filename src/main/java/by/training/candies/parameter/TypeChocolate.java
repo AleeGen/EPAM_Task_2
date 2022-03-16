@@ -1,4 +1,4 @@
-package by.training.candies.parameters;
+package by.training.candies.parameter;
 
 public enum TypeChocolate {
     BITTER("Bitter"),

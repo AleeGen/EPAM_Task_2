@@ -2,15 +2,17 @@ package by.training.candies.builder;
 
 
 public enum CandiesBuilderFactory {
+    ;
 
-        SAX, STAX, DOM;
-
+    private enum TypeParser {
+        SAX, STAX, DOM
+    }
 
     private CandiesBuilderFactory() {
     }
 
     public static AbstractBuilderCandies createCandiesBuilder(String typeParser) {
-        CandiesBuilderFactory type = CandiesBuilderFactory.valueOf(typeParser.toUpperCase());
+        TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case DOM -> {
                 return new CandiesDomBuilder();
