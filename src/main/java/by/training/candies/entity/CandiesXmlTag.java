@@ -24,7 +24,7 @@ public enum CandiesXmlTag {
 
     VALUE("value");
 
-    private String value;
+    private final String value;
 
     CandiesXmlTag(String value) {
         this.value = value;

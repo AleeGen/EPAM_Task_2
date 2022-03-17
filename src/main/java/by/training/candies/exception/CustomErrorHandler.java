@@ -10,19 +10,19 @@ public class CustomErrorHandler implements ErrorHandler {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public void warning(SAXParseException e) throws SAXParseException{
+    public void warning(SAXParseException e) throws SAXParseException {
         logger.warn(getLineColumnNumber(e) + "-" + e.getMessage());
         throw e;
     }
 
     @Override
-    public void error(SAXParseException e) throws SAXParseException{
+    public void error(SAXParseException e) throws SAXParseException {
         logger.error(getLineColumnNumber(e) + " - " + e.getMessage());
         throw e;
     }
 
     @Override
-    public void fatalError(SAXParseException e) throws SAXParseException{
+    public void fatalError(SAXParseException e) throws SAXParseException {
         logger.fatal(getLineColumnNumber(e) + " - " + e.getMessage());
         throw e;
     }

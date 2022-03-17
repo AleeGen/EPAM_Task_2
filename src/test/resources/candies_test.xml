@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema_test.xsd">
+
+    <glazed_candy filling="Fondant" type_glazed="Caramel">
+        <id>g1</id>
+        <name>candy1</name>
+        <date_manufacture>2022-01-01</date_manufacture>
+        <date_expiration>2022-02-07</date_expiration>
+        <production>Ideal</production>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Butter</ingredient>
+        <value>
+            <proteins>3</proteins>
+            <fats>2</fats>
+            <carbohydrates>13</carbohydrates>
+            <energy>18</energy>
+        </value>
+    </glazed_candy>
+
+    <chocolate_candy type_chocolate="Bitter">
+        <id>c1</id>
+        <name>candy2</name>
+        <date_manufacture>2022-03-02</date_manufacture>
+        <date_expiration>2022-06-13</date_expiration>
+        <production>Spartak</production>
+        <ingredient>Fructose</ingredient>
+        <ingredient>Milk</ingredient>
+        <ingredient>Flour</ingredient>
+        <value>
+            <proteins>1</proteins>
+            <fats>2</fats>
+            <carbohydrates>8</carbohydrates>
+            <energy>15</energy>
+        </value>
+    </chocolate_candy>
+
+    <chocolate_candy type_chocolate="White" form="Relief">
+        <id>c2</id>
+        <name>candy3</name>
+        <date_manufacture>2022-04-22</date_manufacture>
+        <date_expiration>2022-12-12</date_expiration>
+        <production>Vesta</production>
+        <ingredient>Salt</ingredient>
+        <ingredient>Sugar</ingredient>
+        <ingredient>Water</ingredient>
+        <value>
+            <proteins>2</proteins>
+            <fats>5</fats>
+            <carbohydrates>14</carbohydrates>
+            <energy>25</energy>
+        </value>
+    </chocolate_candy>
+
+    <glazed_candy filling="With praline">
+        <id>g2</id>
+        <name>candy4</name>
+        <date_manufacture>2022-10-09</date_manufacture>
+        <date_expiration>2022-12-17</date_expiration>
+        <production>Kommunarka</production>
+        <ingredient>Starch</ingredient>
+        <value>
+            <proteins>5</proteins>
+            <fats>1</fats>
+            <carbohydrates>6</carbohydrates>
+            <energy>9</energy>
+        </value>
+    </glazed_candy>
+
+</candies>

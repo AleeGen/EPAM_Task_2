@@ -1,10 +1,6 @@
 package by.training.candies.util;
 
-import by.training.candies.entity.AbstractCandy;
-import by.training.candies.entity.CandiesXmlTag;
-import by.training.candies.entity.ChocolateCandy;
-import by.training.candies.entity.GlazedCandy;
-import by.training.candies.parameter.*;
+import by.training.candies.entity.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -17,10 +13,10 @@ public class CandiesHandler extends DefaultHandler {
     private static final String ELEMENT_CHOCOLATE_CANDIES = "chocolate_candy";
     private static final String ELEMENT_GLAZED_CANDIES = "glazed_candy";
 
-    private Set<AbstractCandy> candies;
+    private final Set<AbstractCandy> candies;
     private AbstractCandy current;
     private CandiesXmlTag currentXmlTag;
-    private EnumSet<CandiesXmlTag> withText;
+    private final EnumSet<CandiesXmlTag> withText;
 
     public CandiesHandler() {
         candies = new HashSet<>();
@@ -77,7 +73,7 @@ public class CandiesHandler extends DefaultHandler {
                 case PRODUCTION -> current.setProduction(Production.getTypeProduction(data));
                 case DATE_MANUFACTURE -> current.setDateManufacture(LocalDate.parse(data));
                 case DATE_EXPIRATION -> current.setDateExpiration(LocalDate.parse(data));
-                case INGREDIENT -> current.getIngredients().add(Ingredients.getIngredients(data));
+                case INGREDIENT -> current.getIngredients().add(Ingredient.getIngredients(data));
                 case PROTEINS -> current.getValue().setProteins(Integer.parseInt(data));
                 case FATS -> current.getValue().setFats(Integer.parseInt(data));
                 case CARBOHYDRATES -> current.getValue().setCarbohydrates(Integer.parseInt(data));

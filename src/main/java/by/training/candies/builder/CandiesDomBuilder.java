@@ -8,11 +8,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import by.training.candies.entity.AbstractCandy;
-import by.training.candies.entity.ChocolateCandy;
-import by.training.candies.entity.GlazedCandy;
+import by.training.candies.entity.*;
 import by.training.candies.exception.CustomException;
-import by.training.candies.parameter.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,17 +20,17 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class CandiesDomBuilder extends AbstractBuilderCandies {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     private DocumentBuilder docBuilder;
 
-    public CandiesDomBuilder() {
-        candies = new HashSet<AbstractCandy>();
+    public CandiesDomBuilder() throws CustomException {
+        candies = new HashSet<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             logger.log(Level.ERROR, "failed to build a DocumentBuilder", e);
-            e.printStackTrace();
+            throw new CustomException(e);
         }
     }
 
@@ -42,24 +39,24 @@ public class CandiesDomBuilder extends AbstractBuilderCandies {
     }
 
     @Override
-    public void buildSetCandies(String filename) {
+    public void buildSetCandies(String filename) throws CustomException {
         Document doc;
         try {
             doc = docBuilder.parse(filename);
             Element root = doc.getDocumentElement();
-            NodeList candies_chocolate = root.getElementsByTagName("chocolate_candy");
-            NodeList candies_glazed = root.getElementsByTagName("glazed_candy");
-            if (candies_chocolate.getLength() + candies_glazed.getLength() == 0) {
+            NodeList candiesChocolate = root.getElementsByTagName("chocolate_candy");
+            NodeList candiesGlazed = root.getElementsByTagName("glazed_candy");
+            if (candiesChocolate.getLength() + candiesGlazed.getLength() == 0) {
                 throw new CustomException();
             }
-            buildInside(candies_chocolate);
-            buildInside(candies_glazed);
+            buildInside(candiesChocolate);
+            buildInside(candiesGlazed);
         } catch (CustomException e) {
             logger.log(Level.ERROR, "{} file contains 0 candies", filename, e);
-            e.printStackTrace();
+            throw e;
         } catch (IOException | SAXException e) {
             logger.log(Level.ERROR, "{} file problems", filename, e);
-            e.printStackTrace();
+            throw new CustomException(e);
         }
     }
 
@@ -82,31 +79,32 @@ public class CandiesDomBuilder extends AbstractBuilderCandies {
             ((GlazedCandy) candy).setTypeGlazed(TypeGlazed.getType(candiesElement.getAttribute("type_glazed")));
             ((GlazedCandy) candy).setFilling(Filling.getType(candiesElement.getAttribute("filling")));
         }
-        candy.setId(getElementTextContent(candiesElement, "id"));
-        candy.setName(getElementTextContent(candiesElement, "name"));
-        candy.setDateManufacture(LocalDate.parse(getElementTextContent(candiesElement, "date_manufacture")));
-        candy.setDateExpiration(LocalDate.parse(getElementTextContent(candiesElement, "date_expiration")));
-        candy.setProduction(Production.getTypeProduction(getElementTextContent(candiesElement, "production")));
-        NodeList ingredientList = candiesElement.getElementsByTagName("ingredient");
-        int countTeg = ingredientList.getLength();
-        for (int i = 0; i < countTeg; i++) {
-            String ingredient = ingredientList.item(i).getTextContent();
-            candy.getIngredients().add(Ingredients.getIngredients(ingredient));
+        if (candy != null) {
+            candy.setId(getElementTextContent(candiesElement, "id"));
+            candy.setName(getElementTextContent(candiesElement, "name"));
+            candy.setDateManufacture(LocalDate.parse(getElementTextContent(candiesElement, "date_manufacture")));
+            candy.setDateExpiration(LocalDate.parse(getElementTextContent(candiesElement, "date_expiration")));
+            candy.setProduction(Production.getTypeProduction(getElementTextContent(candiesElement, "production")));
+            NodeList ingredientList = candiesElement.getElementsByTagName("ingredient");
+            int countTeg = ingredientList.getLength();
+            for (int i = 0; i < countTeg; i++) {
+                String ingredient = ingredientList.item(i).getTextContent();
+                candy.getIngredients().add(Ingredient.getIngredients(ingredient));
+            }
+            Value value = candy.getValue();
+            Element valueElement = (Element) candiesElement.getElementsByTagName("value").item(0);
+            value.setProteins(Integer.parseInt(getElementTextContent(valueElement, "proteins")));
+            value.setFats(Integer.parseInt(getElementTextContent(valueElement, "fats")));
+            value.setCarbohydrates(Integer.parseInt(getElementTextContent(valueElement, "carbohydrates")));
+            value.setEnergy(Integer.parseInt(getElementTextContent(valueElement, "energy")));
         }
-        Value value = candy.getValue();
-        Element valueElement = (Element) candiesElement.getElementsByTagName("value").item(0);
-        value.setProteins(Integer.parseInt(getElementTextContent(valueElement, "proteins")));
-        value.setFats(Integer.parseInt(getElementTextContent(valueElement, "fats")));
-        value.setCarbohydrates(Integer.parseInt(getElementTextContent(valueElement, "carbohydrates")));
-        value.setEnergy(Integer.parseInt(getElementTextContent(valueElement, "energy")));
         return candy;
     }
 
     private static String getElementTextContent(Element element, String elementName) {
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);
-        String text = node.getTextContent();
-        return text;
+        return node.getTextContent();
     }
 
 }

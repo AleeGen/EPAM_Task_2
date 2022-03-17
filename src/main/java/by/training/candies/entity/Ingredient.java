@@ -1,6 +1,6 @@
-package by.training.candies.parameter;
+package by.training.candies.entity;
 
-public enum Ingredients {
+public enum Ingredient {
     WATER("Water"),
     SUGAR("Sugar"),
     VANILLIN("Vanillin"),
@@ -13,14 +13,14 @@ public enum Ingredients {
     FLOUR("Flour"),
     SALT("Salt");
 
-    private String ingredients;
+    private final String ingredients;
 
-    Ingredients(String ingredients) {
+    Ingredient(String ingredients) {
         this.ingredients = ingredients;
     }
 
-    public static Ingredients getIngredients(String ingredients) {
-        for (Ingredients ingr : Ingredients.values()) {
+    public static Ingredient getIngredients(String ingredients) {
+        for (Ingredient ingr : Ingredient.values()) {
             if (ingr.ingredients.equals(ingredients)) {
                 return ingr;
             }

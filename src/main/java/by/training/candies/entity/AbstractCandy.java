@@ -1,20 +1,16 @@
 package by.training.candies.entity;
 
 
-import by.training.candies.parameter.Ingredients;
-import by.training.candies.parameter.Production;
-import by.training.candies.parameter.Value;
-
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class AbstractCandy {  //// TODO: 12.03.2022 использовать Builder
-    private String id;   //// TODO: 14.03.2022 должен быть long, но в xml ID строковый
+public abstract class AbstractCandy {
+    private String id;
     private String name;
     private Production production;
     private LocalDate dateManufacture;
     private LocalDate dateExpiration;
-    private Set<Ingredients> ingredients;
+    private Set<Ingredient> ingredients;
     private Value value;
 
     AbstractCandy() {
@@ -22,7 +18,7 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
         value = new Value();
     }
 
-    AbstractCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate) {
+    AbstractCandy(String id, String name, Production production, Set<Ingredient> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate) {
         this.id = id;
         this.name = name;
         this.production = production;
@@ -33,7 +29,7 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
     }
 
     public String getId() {
-        return id.toString();
+        return id;
     }
 
     public String getName() {
@@ -44,7 +40,7 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
         return production;
     }
 
-    public Set<Ingredients> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
@@ -72,7 +68,7 @@ public abstract class AbstractCandy {  //// TODO: 12.03.2022 использов�
         this.production = production;
     }
 
-    public void setIngredients(Set<Ingredients> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

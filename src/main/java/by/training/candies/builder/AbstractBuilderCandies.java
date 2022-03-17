@@ -1,6 +1,7 @@
 package by.training.candies.builder;
 
 import by.training.candies.entity.AbstractCandy;
+import by.training.candies.exception.CustomException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,11 +9,11 @@ import java.util.Set;
 public abstract class AbstractBuilderCandies {
     protected Set<AbstractCandy> candies;
 
-    public AbstractBuilderCandies() {
+    protected AbstractBuilderCandies() {
         candies = new HashSet<>();
     }
 
-    public AbstractBuilderCandies(Set<AbstractCandy> candies) {
+    protected AbstractBuilderCandies(Set<AbstractCandy> candies) {
         this.candies = candies;
     }
 
@@ -20,5 +21,5 @@ public abstract class AbstractBuilderCandies {
         return candies;
     }
 
-    public abstract void buildSetCandies(String filename);
+    public abstract void buildSetCandies(String filename) throws CustomException;
 }

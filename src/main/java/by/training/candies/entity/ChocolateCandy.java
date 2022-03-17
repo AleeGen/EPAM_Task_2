@@ -1,7 +1,5 @@
 package by.training.candies.entity;
 
-import by.training.candies.parameter.*;
-
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -14,7 +12,7 @@ public class ChocolateCandy extends AbstractCandy {
         super();
     }
 
-    public ChocolateCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeChocolate typeChocolate, Form form) {
+    public ChocolateCandy(String id, String name, Production production, Set<Ingredient> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeChocolate typeChocolate, Form form) {
         super(id, name, production, ingredients, value, dateManufacture, bestBeforeDate);
         this.typeChocolate = typeChocolate;
         this.form = form;
@@ -41,7 +39,6 @@ public class ChocolateCandy extends AbstractCandy {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass() || !super.equals(o)) return false;
-        if (!super.equals(o)) return false;
         ChocolateCandy that = (ChocolateCandy) o;
         return typeChocolate == that.typeChocolate && form == that.form;
     }

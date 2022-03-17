@@ -1,10 +1,10 @@
-package by.training.candies.parameter;
+package by.training.candies.entity;
 
 public enum TypeChocolate {
     BITTER("Bitter"),
     LACTIC("Lactic"),
     WHITE("White");
-    String type;
+    private final String type;
 
     TypeChocolate(String type) {
         this.type = type;

@@ -2,6 +2,7 @@ package by.training.candies.builder;
 
 import by.training.candies.entity.AbstractCandy;
 import by.training.candies.exception.CustomErrorHandler;
+import by.training.candies.exception.CustomException;
 import by.training.candies.util.CandiesHandler;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +17,11 @@ import java.io.IOException;
 import java.util.Set;
 
 public class CandiesSaxBuilder extends AbstractBuilderCandies {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     private CandiesHandler handler;
     private XMLReader reader;
 
-    public CandiesSaxBuilder() {
+    public CandiesSaxBuilder() throws CustomException {
         handler = new CandiesHandler();
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
@@ -28,7 +29,7 @@ public class CandiesSaxBuilder extends AbstractBuilderCandies {
             reader = saxParser.getXMLReader();
         } catch (ParserConfigurationException | SAXException e) {
             logger.log(Level.ERROR, "failed to build a DocumentBuilder", e);
-            e.printStackTrace();
+            throw new CustomException(e);
         }
         reader.setErrorHandler(new CustomErrorHandler());
         reader.setContentHandler(handler);
@@ -39,12 +40,12 @@ public class CandiesSaxBuilder extends AbstractBuilderCandies {
     }
 
     @Override
-    public void buildSetCandies(String filename) {
+    public void buildSetCandies(String filename) throws CustomException {
         try {
             reader.parse(filename);
         } catch (IOException | SAXException e) {
             logger.log(Level.ERROR, "failed to build a DocumentBuilder", e);
-            e.printStackTrace();
+            throw new CustomException(e);
         }
         candies = handler.getCandies();
     }

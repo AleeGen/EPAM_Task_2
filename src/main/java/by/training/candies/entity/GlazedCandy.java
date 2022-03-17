@@ -1,7 +1,5 @@
 package by.training.candies.entity;
 
-import by.training.candies.parameter.*;
-
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -12,7 +10,7 @@ public class GlazedCandy extends AbstractCandy {
     public GlazedCandy() {
     }
 
-    public GlazedCandy(String id, String name, Production production, Set<Ingredients> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeGlazed glazed, Filling filling) {
+    public GlazedCandy(String id, String name, Production production, Set<Ingredient> ingredients, Value value, LocalDate dateManufacture, LocalDate bestBeforeDate, TypeGlazed glazed, Filling filling) {
         super(id, name, production, ingredients, value, dateManufacture, bestBeforeDate);
         this.glazed = glazed;
         this.filling = filling;

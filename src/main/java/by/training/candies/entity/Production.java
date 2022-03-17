@@ -1,4 +1,4 @@
-package by.training.candies.parameter;
+package by.training.candies.entity;
 
 public enum Production {
     IDEAL("Ideal"),
@@ -9,16 +9,16 @@ public enum Production {
     KOMMUNARKA("Kommunarka"),
     SMAK("Smak"),
     RAIPO("Raipo");
-    private String production;
+    private final String typeProduction;
 
-    Production(String production) {
-        this.production = production;
+    Production(String typeProduction) {
+        this.typeProduction = typeProduction;
     }
 
     public static Production getTypeProduction(String typeProduction) {
-        for (Production production : Production.values()) {
-            if (production.production.equals(typeProduction)) {
-                return production;
+        for (Production prod : Production.values()) {
+            if (prod.typeProduction.equals(typeProduction)) {
+                return prod;
             }
         }
         return null;

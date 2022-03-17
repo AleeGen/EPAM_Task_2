@@ -1,4 +1,4 @@
-package by.training.candies.parameter;
+package by.training.candies.entity;
 
 public enum Filling {
     GRILLAGE("Grillage"),
@@ -9,15 +9,15 @@ public enum Filling {
     JELLY("Jelly"),
     TRUFFLES("Truffles"),
     WITH_PUFFED_RICE("With puffed rice");
-    private String filling;
+    private final String fill;
 
-    Filling(String filling) {
-        this.filling = filling;
+    Filling(String fill) {
+        this.fill = fill;
     }
 
-    public static Filling getType(String filling) {
+    public static Filling getType(String fill) {
         for (Filling fil : Filling.values()) {
-            if (fil.filling.equals(filling)) {
+            if (fil.fill.equals(fill)) {
                 return fil;
             }
         }

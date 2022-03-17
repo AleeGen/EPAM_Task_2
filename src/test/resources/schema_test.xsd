@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:element name="candies">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="candy" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="candy_type">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:ID"/>
+            <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="30"/>
+            <xsd:element name="date_manufacture" type="custom_date_type"/>
+            <xsd:element name="date_expiration" type="custom_date_type"/>
+            <xsd:element name="production" type="production_type"/>
+            <xsd:element name="ingredient" type="ingredients_type" maxOccurs="unbounded"/>
+            <xsd:element name="value" type="value_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="chocolate_candy_type">
+        <xsd:complexContent>
+            <xsd:extension base="candy_type">
+                <xsd:attribute name="type_chocolate" type="type_chocolate_type" use="required"/>
+                <xsd:attribute name="form" type="form_type" use="optional" default="Free"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="glazed_candy_type">
+        <xsd:complexContent>
+            <xsd:extension base="candy_type">
+                <xsd:attribute name="type_glazed" type="type_glazed_type" use="optional" default="Missing"/>
+                <xsd:attribute name="filling" type="filling_type" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="candy" type="candy_type" abstract="true"/>
+
+    <xsd:element name="chocolate_candy" type="chocolate_candy_type" substitutionGroup="candy"/>
+
+    <xsd:element name="glazed_candy" type="glazed_candy_type" substitutionGroup="candy"/>
+
+
+    <xsd:simpleType name="custom_date_type">
+        <xsd:restriction base="xsd:date">
+            <xsd:pattern value="(19|20)?[0-9]{2}[- /.](0?[1-9]|1[012])[- /.](3[01]|[12][0-9]|0?[0-9])"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="filling_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Grillage"/>
+            <xsd:enumeration value="Souffle"/>
+            <xsd:enumeration value="Fondant"/>
+            <xsd:enumeration value="With praline"/>
+            <xsd:enumeration value="With liquor"/>
+            <xsd:enumeration value="Jelly"/>
+            <xsd:enumeration value="Truffles"/>
+            <xsd:enumeration value="With puffed rice"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="form_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Rectangular"/>
+            <xsd:enumeration value="Round"/>
+            <xsd:enumeration value="Square"/>
+            <xsd:enumeration value="Oval"/>
+            <xsd:enumeration value="Relief"/>
+            <xsd:enumeration value="Free"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ingredients_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Water"/>
+            <xsd:enumeration value="Sugar"/>
+            <xsd:enumeration value="Vanillin"/>
+            <xsd:enumeration value="Fructose"/>
+            <xsd:enumeration value="Starch"/>
+            <xsd:enumeration value="Butter"/>
+            <xsd:enumeration value="Vegetable fat"/>
+            <xsd:enumeration value="Milk"/>
+            <xsd:enumeration value="Wafer"/>
+            <xsd:enumeration value="Flour"/>
+            <xsd:enumeration value="Salt"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="production_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Ideal"/>
+            <xsd:enumeration value="Spartak"/>
+            <xsd:enumeration value="Good new"/>
+            <xsd:enumeration value="Vitroom"/>
+            <xsd:enumeration value="Vesta"/>
+            <xsd:enumeration value="Kommunarka"/>
+            <xsd:enumeration value="Smak"/>
+            <xsd:enumeration value="Raipo"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="type_chocolate_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Bitter"/>
+            <xsd:enumeration value="Lactic"/>
+            <xsd:enumeration value="White"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="type_glazed_type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Chololate"/>
+            <xsd:enumeration value="Fat"/>
+            <xsd:enumeration value="Caramel"/>
+            <xsd:enumeration value="Dairy"/>
+            <xsd:enumeration value="White"/>
+            <xsd:enumeration value="Sugar"/>
+            <xsd:enumeration value="Missing"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="value_type">
+        <xsd:sequence>
+            <xsd:element name="proteins" type="xsd:positiveInteger"/>
+            <xsd:element name="fats" type="xsd:positiveInteger"/>
+            <xsd:element name="carbohydrates" type="xsd:positiveInteger"/>
+            <xsd:element name="energy" type="xsd:positiveInteger"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

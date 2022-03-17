@@ -1,6 +1,8 @@
 package by.training.candies.builder;
 
 
+import by.training.candies.exception.CustomException;
+
 public enum CandiesBuilderFactory {
     ;
 
@@ -8,23 +10,16 @@ public enum CandiesBuilderFactory {
         SAX, STAX, DOM
     }
 
-    private CandiesBuilderFactory() {
+    CandiesBuilderFactory() {
     }
 
-    public static AbstractBuilderCandies createCandiesBuilder(String typeParser) {
+    public static AbstractBuilderCandies createCandiesBuilder(String typeParser) throws CustomException, EnumConstantNotPresentException {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
-        switch (type) {
-            case DOM -> {
-                return new CandiesDomBuilder();
-            }
-            case STAX -> {
-                return new CandiesStaxBuilder();
-            }
-            case SAX -> {
-                return new CandiesSaxBuilder();
-            }
-            default -> throw new EnumConstantNotPresentException(
-                    type.getDeclaringClass(), type.name());
-        }
+        return switch (type) {
+            case DOM -> new CandiesDomBuilder();
+            case STAX -> new CandiesStaxBuilder();
+            case SAX -> new CandiesSaxBuilder();
+            default -> throw new EnumConstantNotPresentException(type.getDeclaringClass(), type.name());
+        };
     }
 }

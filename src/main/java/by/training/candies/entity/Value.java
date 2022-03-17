@@ -1,4 +1,4 @@
-package by.training.candies.parameter;
+package by.training.candies.entity;
 
 import java.util.Arrays;
 
